@@ -37,6 +37,7 @@ in float v_TexIndex;
 void main()
 {
 	int index = int(v_TexIndex);
-	color = texture(u_Textures[index], v_TexCoord);
+	//color = texture(u_Textures[index], v_TexCoord);
+	color = v_Color;
 
 };

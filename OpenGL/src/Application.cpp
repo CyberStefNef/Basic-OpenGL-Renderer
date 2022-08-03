@@ -27,6 +27,7 @@
 #include "tests/TestTexture2D.h"
 #include "tests/TestQuad.h"
 #include "tests/TestBatchTexture2D.h"
+#include "tests/TestQuad3D.h"
 
 int main(void)
 {
@@ -91,6 +92,7 @@ int main(void)
 	testMenu->RegisterTest<test::TestTexture2D>("Texture2D");
 	testMenu->RegisterTest<test::TestQuad>("Batch Quad");
 	testMenu->RegisterTest<test::TestBatchTexture2D>("Batch Texture2D");
+	testMenu->RegisterTest<test::TestQuad3D>("Quad3D");
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))

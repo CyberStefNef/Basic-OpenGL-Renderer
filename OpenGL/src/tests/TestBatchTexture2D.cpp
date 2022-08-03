@@ -48,11 +48,6 @@ namespace test {
 		const size_t MaxVertexCount = MaxQuadCount * 4;
 		const size_t MaxIndexCount = MaxQuadCount * 6;
 
-		//unsigned int indices[] = {
-		//	0, 1, 2, 2, 3, 0,
-		//	4, 5, 6, 6, 7, 4
-		//};
-
 		uint32_t indices[MaxIndexCount];
 		uint32_t offset = 0;
 		uint32_t indexCount = 0;

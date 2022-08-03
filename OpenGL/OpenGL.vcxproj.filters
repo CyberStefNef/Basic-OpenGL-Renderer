@@ -84,6 +84,9 @@
     <ClCompile Include="src\CameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\TestQuad3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\BasicTexture.shader" />
@@ -1414,6 +1417,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\CameraController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestQuad3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

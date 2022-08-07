@@ -164,7 +164,7 @@ namespace test {
 		m_HazelTex->Bind(1);
 		{
 			glm::mat4 model = glm::translate(glm::mat4(1.0f), m_trans_model);
-			glm::mat4 mvp = m_cameraController.getProj() * m_cameraController.getView() * model;
+			glm::mat4 mvp =  model;
 			m_Shader->Bind();
 			m_Shader->SetUniformMat4f("u_MVP", mvp);
 			renderer.Draw(*m_VAO, *m_IndexBuffer, *m_Shader);

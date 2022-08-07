@@ -5,8 +5,11 @@
 #include "Texture.h"
 #include "VertexBuffer.h"
 #include "VertexBufferLayout.h"
+#include "Camera.h"
+#include "Transform.h"
 
 #include <memory>
+#include <CameraController.h>
 
 namespace test {
 
@@ -26,8 +29,9 @@ namespace test {
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<Texture> m_Texture;
 
-		glm::vec3 m_trans_model;
-		glm::mat4 m_Proj, m_View;
+		CameraController m_camera;
+		Transform m_transform;
+		glm::vec3 m_rotation;
 	};
 
 }

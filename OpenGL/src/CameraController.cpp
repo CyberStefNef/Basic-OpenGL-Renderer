@@ -9,7 +9,7 @@ static int mouseButtonState;
 static float scrollState;
 
 CameraController::CameraController()
-	:m_View(glm::vec3(0, 0, 1)), m_Offset(glm::vec3(0,0,0)), m_scale(1)
+	:m_View(glm::vec3(0, 0, 1)), m_Offset(glm::vec3(0,0,0)), m_scale(-6), m_camera(glm::vec3(0, 0, m_scale), 75.0f, 4.0f / 3.0f, 0.01, 1000.0f)
 {	
 
 	m_inputController.mouseActionCallBack([](int action){
@@ -32,7 +32,7 @@ glm::mat4 CameraController::getProj()
 
 	if (scrollState != 0)
 	{
-		m_scale += scrollState * 0.25;
+		m_scale += scrollState * 0.5;
 		if (m_scale < 0)
 			m_scale = 0.1f;
 		scrollState = 0;
@@ -43,30 +43,46 @@ glm::mat4 CameraController::getProj()
 	return m_Proj;
 }
 
+Camera CameraController::getPersCamera()
+{
+	if (scrollState != 0)
+	{
+		m_camera.MoveForward(scrollState * 0.1);
+		scrollState = 0;
+	}
 
-glm::mat4 CameraController::getView()
+	getView();
+
+	return m_camera;
+}
+
+
+void CameraController::getView()
 {
 	glm::vec2 pos = m_inputController.getCursorPosition();
+
 
 	if (mouseButtonState == MOUSE_PRESSED)
 	{
 		m_startPos = pos;
+		mouseButtonState = MOUSE_NONE;
 	}
 
 	if (m_inputController.getMouseAction() == MOUSE_PRESS) {
 		m_endPos = pos;
-		m_Offset = glm::vec3((m_endPos.x - m_startPos.x) / 960 * m_scale * 2, -(m_endPos.y - m_startPos.y) / 720 * m_scale * 2, 0.0f);
-	}
+		m_Offset = glm::vec2(-(m_endPos.x - m_startPos.x) / 960, -(m_endPos.y - m_startPos.y) / 720);
 
-	glm::vec3 tempView = m_View + m_Offset;
+		m_camera.MoveRight(m_Offset.x);
+		m_camera.MoveUp(m_Offset.y);
+
+		m_startPos = pos;
+	}
 
 	if (mouseButtonState == MOUSE_RELEASED)
 	{
-		m_View += m_Offset;
-		m_Offset = { 0.0f, 0.0f, 0.0f };
+		mouseButtonState = MOUSE_NONE;
+		m_Offset = { 0.0f, 0.0f };
 	}
 
-	mouseButtonState = MOUSE_NONE;
-
-	return glm::translate(glm::mat4(1.0f), tempView);
+	
 }

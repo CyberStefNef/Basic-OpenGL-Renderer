@@ -2,6 +2,7 @@
 
 #include "glm/glm.hpp"
 #include "InputController.h"
+#include "Camera.h"
 
 class CameraController
 {
@@ -9,8 +10,9 @@ public:
 	CameraController();
 	~CameraController();
 
-	glm::mat4 getView();
+	void getView();
 	glm::mat4 getProj();
+	Camera getPersCamera();
 
 private:
 
@@ -19,10 +21,10 @@ private:
 	float m_scale;
 	int m_mouseButtonState;
 
-	glm::vec3 m_View;
-	glm::vec3 m_Offset;
+	glm::vec2 m_View;
+	glm::vec2 m_Offset;
 	glm::mat4 m_Proj;
 
 	InputController m_inputController;
-
+	Camera m_camera;
 };

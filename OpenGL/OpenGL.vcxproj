@@ -309,6 +309,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\CameraController.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\InputController.h" />
@@ -321,6 +322,7 @@
     <ClInclude Include="src\tests\TestQuad3D.h" />
     <ClInclude Include="src\tests\TestTexture2D.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Transform.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />

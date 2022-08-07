@@ -16,31 +16,7 @@ uniform float u_Timer;
 void main()
 {
 
-	mat4 view_frustum = mat4(
-		vec4(1.0 / tan(radians(45.0)), 0.0, 0.0, 0.0),
-		vec4(0.0, 4.0 / 3.0 / tan(radians(45.0)), 0.0, 0.0),
-		vec4(0.0, 0.0, (5.0 + 0.5) / (5.0 - 0.5), 1.0),
-		vec4(0.0, 0.0, -2.0 * 5.0 * 0.5 / (5.0 - 0.5), 0.0)
-	);
-
-	mat4 translate = mat4(
-			vec4(1.0, 0.0, 0.0, 0.0),
-			vec4(0.0, 1.0, 0.0, 0.0),
-			vec4(0.0, 0.0, 1.0, 0.0),
-			vec4(cos(u_Timer), 0.0, 3.0 + sin(u_Timer), 1.0)
-		);
-
-	mat4 rotation = mat4(
-		vec4(1.0, 0.0, 0.0, 0.0),
-		vec4(0.0, cos(u_Timer), sin(u_Timer), 0.0),
-		vec4(0.0, -sin(u_Timer), cos(u_Timer), 0.0),
-		vec4(0.0, 0.0, 0.0, 1.0)
-	);
-
-	gl_Position = view_frustum
-		* translate
-		* rotation
-		* position;
+	gl_Position = u_MVP * position;
    v_Color = color;
    v_TexCoord = TexCoord;
    v_TexIndex = TexIndex;
